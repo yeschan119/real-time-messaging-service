@@ -67,25 +67,48 @@ Angular (SignalR Client)
 ---
 
 <details>
-<summary><strong>📈 Architecture Flow</strong></summary>
+<summary><strong>📈 Architecture Diagram & Flow</strong></summary>
 
-### Message Flow
+```
++----------------+
+|   Angular App  |
+| (SignalR Client)|
++--------+-------+
+         |
+         | 1. Connect via WebSocket
+         |
++--------v-------+
+|  SignalR Hub    |
+| (.NET API on    |
+|  AWS Beanstalk) |
++--------+-------+
+         |
+         | 2. Save Message to AWS SQS
+         |
++--------v-------+
+|    AWS SQS     |
++--------+-------+
+         |
+         | 3. Trigger Lambda
+         |
++--------v-------+
+|    AWS Lambda  |
++--------+-------+
+         |
+         | 4. Save to DynamoDB
+         |
++--------v-------+
+|    DynamoDB    |
++----------------+
+```
 
-1. Client connects to SignalR Hub via WebSocket.
-2. User sends message.
-3. Hub:
-   - Immediately pushes message to online recipients.
-   - Publishes event to Amazon SQS.
-4. Lambda is triggered.
-5. Lambda persists message into DynamoDB.
-6. DynamoDB becomes the source of truth for chat history.
+### Flow Description
 
-### Why This Design?
-
-- WebSocket ensures real-time UX.
-- SQS decouples processing.
-- Lambda enables serverless persistence.
-- DynamoDB provides scalable NoSQL storage.
+1. Angular client connects to SignalR Hub via WebSocket.
+2. Server receives message and pushes to AWS SQS.
+3. Lambda is triggered.
+4. Lambda persists data to DynamoDB.
+5. DynamoDB serves as chat history source.
 
 </details>
 
