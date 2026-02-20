@@ -129,8 +129,11 @@ Angular (SignalR Client)
 <img width="300" height="300" alt="Screenshot 2026-02-19 at 23 31 35" src="https://github.com/user-attachments/assets/6d0d1721-33b1-4d8a-842d-2e2d91a290a2" />
 <img width="300" height="400" alt="Screenshot 2026-02-19 at 23 33 32" src="https://github.com/user-attachments/assets/4ef9b1d7-8885-428b-8977-6cd3bb7d232e" />
 <img width="300" height="500" alt="Screenshot 2026-02-19 at 23 33 32" src="https://github.com/user-attachments/assets/837a11d4-ea10-424e-b61a-68959be2fe57" />
+<img width="300" height="450" alt="chat3" src="https://github.com/user-attachments/assets/1928cdb8-b62c-436a-9804-e7e932f15dcf" />
+<img width="300" height="450" alt="chat4" src="https://github.com/user-attachments/assets/7c69b171-78d6-4234-a470-f7ee0e241f02" />
 
 </details>
+
 ---
 <details>
 <summary><strong>핵심 기능 (Core Features)</strong></summary>
