@@ -1,6 +1,7 @@
 # 실시간 메시징 서비스  
 ### Angular + .NET 8 + SignalR + AWS (이벤트 기반 아키텍처)
 
+[English](README.md)
 ---
 
 ## Executive Summary
