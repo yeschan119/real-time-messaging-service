@@ -3,9 +3,9 @@
 
 ---
 
-## 🚀 Executive Summary
+## Executive Summary
 
-다음과 같은 요소를 기반으로 **Production-Grade 실시간 메시징 플랫폼**을 설계 및 구현하였습니다:
+다음과 같은 요소를 기반으로 **Production-Grade 실시간 메시징 플랫폼**을 설계 및 구현:
 
 - ⚡ WebSocket 기반 실시간 통신 (SignalR)
 - 📨 이벤트 기반 영속성 처리 (SQS → Lambda → DynamoDB)
@@ -19,7 +19,7 @@
 
 ---
 
-## 🏗 상위 아키텍처 (High-Level Architecture)
+## 상위 아키텍처 (High-Level Architecture)
 
 ```
 Angular (SignalR Client)
@@ -42,7 +42,7 @@ Angular (SignalR Client)
 
 ---
 
-## 🛠 기술 스택 (Technical Stack)
+## 기술 스택 (Technical Stack)
 
 ### Frontend
 - Angular 12
@@ -62,7 +62,7 @@ Angular (SignalR Client)
 
 ---
 
-## 📈 시스템 규모 (System Scale)
+## 시스템 규모 (System Scale)
 
 | 항목 | 규모 |
 |------|------|
@@ -73,7 +73,7 @@ Angular (SignalR Client)
 
 ---
 
-# 🔍 상세 설계 (클릭하여 펼치기)
+# 상세 설계 (클릭하여 펼치기)
 
 ---
 
@@ -123,6 +123,14 @@ Angular (SignalR Client)
 
 </details>
 
+---
+<details>
+<summary><strong>결과 예시</strong></summary>
+<img width="502"<img width="502" height="514" alt="Screenshot 2026-02-19 at 23 31 35" src="https://github.com/user-attachments/assets/6d0d1721-33b1-4d8a-842d-2e2d91a290a2" />
+<img width="623" height="717" alt="Screenshot 2026-02-19 at 23 33 32" src="https://github.com/user-attachments/assets/4ef9b1d7-8885-428b-8977-6cd3bb7d232e" />
+<img width="623" height="717" alt="Screenshot 2026-02-19 at 23 33 32" src="https://github.com/user-attachments/assets/837a11d4-ea10-424e-b61a-68959be2fe57" />
+
+</details>
 ---
 
 <details>
@@ -290,7 +298,7 @@ FIFO 설정:
 
 # 🏁 결론
 
-이 프로젝트는 다음을 보여줍니다:
+이 프로젝트는:
 
 - 실시간 WebSocket 아키텍처 설계
 - 이벤트 기반 클라우드 시스템 설계
@@ -299,4 +307,4 @@ FIFO 설정:
 - 확장 가능한 AWS 기반 운영 환경
 
 즉각적인 사용자 경험과 안정적인 백엔드 처리를 동시에 만족하는  
-Production 수준의 메시징 플랫폼입니다.
+Production 수준의 메시징 플랫폼.
