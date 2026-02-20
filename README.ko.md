@@ -112,6 +112,8 @@ Angular (SignalR Client)
 |    DynamoDB    |
 +----------------+
 ```
+<img width="600" height="400" alt="chat2" src="https://github.com/user-attachments/assets/bb9c2a21-03a5-4709-b039-cf62acf5889c" />
+
 
 ### 동작 흐름
 
