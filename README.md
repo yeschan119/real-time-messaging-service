@@ -3,7 +3,7 @@
 
 ---
 
-## 🚀 Executive Summary
+## Executive Summary
 
 Designed and implemented a **production-grade real-time messaging platform** with:
 
@@ -19,7 +19,7 @@ Designed and implemented a **production-grade real-time messaging platform** wit
 
 ---
 
-## 🏗 High-Level Architecture
+## High-Level Architecture
 
 ```
 Angular (SignalR Client)
@@ -42,7 +42,7 @@ Angular (SignalR Client)
 
 ---
 
-## 🛠 Technical Stack
+## Technical Stack
 
 ### Frontend
 - Angular 12
@@ -62,7 +62,7 @@ Angular (SignalR Client)
 
 ---
 
-## 📈 System Scale
+## System Scale
 
 | Metric | Value |
 |--------|-------|
@@ -73,12 +73,12 @@ Angular (SignalR Client)
 
 ---
 
-# 🔍 Detailed Sections (Click to Expand)
+# Detailed Sections (Click to Expand)
 
 ---
 
 <details>
-<summary><strong>📈 Architecture Diagram & Flow</strong></summary>
+<summary><strong>Architecture Diagram & Flow</strong></summary>
 
 ```
 +----------------+
@@ -126,7 +126,7 @@ Angular (SignalR Client)
 ---
 
 <details>
-<summary><strong>✨ Core Features</strong></summary>
+<summary><strong>Core Features</strong></summary>
 
 ### Messaging
 
@@ -156,7 +156,7 @@ Angular (SignalR Client)
 ---
 
 <details>
-<summary><strong>⚡ Performance Optimization</strong></summary>
+<summary><strong>Performance Optimization</strong></summary>
 
 ### Real-Time Communication
 
@@ -189,7 +189,7 @@ Angular (SignalR Client)
 ---
 
 <details>
-<summary><strong>📘 AWS Resource Design</strong></summary>
+<summary><strong>AWS Resource Design</strong></summary>
 
 ### Queues
 
@@ -219,7 +219,7 @@ FIFO Configuration:
 ---
 
 <details>
-<summary><strong>🧠 Technical Decisions</strong></summary>
+<summary><strong>Technical Decisions</strong></summary>
 
 ### Why SignalR?
 
@@ -252,7 +252,7 @@ FIFO Configuration:
 ---
 
 <details>
-<summary><strong>🌐 Deployment Architecture</strong></summary>
+<summary><strong>Deployment Architecture</strong></summary>
 
 - Elastic Beanstalk environment
 - EC2 Auto Scaling
@@ -265,7 +265,7 @@ FIFO Configuration:
 ---
 
 <details>
-<summary><strong>🎯 Impact</strong></summary>
+<summary><strong>Impact</strong></summary>
 
 ### Product-Level Impact
 
