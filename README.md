@@ -15,7 +15,7 @@ Designed and implemented a **production-grade real-time messaging platform** wit
 - ☁ Fully deployed on AWS Elastic Beanstalk
 - 📈 Horizontally scalable backend architecture
 
-> Real-time user experience + asynchronous, resilient cloud persistence.
+> Real-time UX combined with resilient cloud-native event processing.
 
 ---
 
@@ -26,19 +26,19 @@ Angular (SignalR Client)
         ↓ WebSocket
 .NET SignalR Hub (Elastic Beanstalk)
         ↓
-     Amazon SQS
+     Amazon SQS (FIFO)
         ↓
      AWS Lambda
         ↓
      DynamoDB
 ```
 
-### Design Principles
+### Core Design Principles
 
-- Separate **real-time delivery** from **data persistence**
-- Use FIFO queues to guarantee message order
-- Ensure system resiliency via decoupled architecture
-- Enable horizontal scalability
+- Separate real-time transport from data persistence
+- Guarantee message order using FIFO queues
+- Ensure scalability through decoupled architecture
+- Optimize for low latency
 
 ---
 
@@ -62,7 +62,18 @@ Angular (SignalR Client)
 
 ---
 
-# 🔍 Detailed Design (Click to Expand)
+## 📈 System Scale
+
+| Metric | Value |
+|--------|-------|
+| Organizations | 2 Hospitals |
+| Users | Hundreds |
+| Daily Messages | Hundreds ~ Thousands |
+| Average Response | Real-time (WebSocket) |
+
+---
+
+# 🔍 Detailed Sections (Click to Expand)
 
 ---
 
@@ -117,10 +128,11 @@ Angular (SignalR Client)
 <details>
 <summary><strong>✨ Core Features</strong></summary>
 
-### Real-Time Capabilities
+### Messaging
 
-- Instant message delivery
-- Message edit & delete
+- Real-time send/receive
+- Edit message
+- Delete message
 - Read receipts
 - Group chat
 - Online presence updates
@@ -128,17 +140,49 @@ Angular (SignalR Client)
 ### Chat Lifecycle
 
 - Create chat room (1:1 or group)
-- Add participants dynamically
-- Load chat list on login (including unread count)
-- Bi-directional conversation creation
-- Retrieve full chat history
-- Real-time synchronization of all state changes
+- Add users dynamically
+- Load chat list on login (including unread)
+- Bi-directional chat initialization
+- Retrieve chat history
 
 ### File Upload
 
-- S3 Presigned URL generation
-- Secure direct client upload
-- File metadata stored in message record
+- Store files in Amazon S3
+- Persist only Presigned URL in message record
+- Secure direct upload from client
+
+</details>
+
+---
+
+<details>
+<summary><strong>⚡ Performance Optimization</strong></summary>
+
+### Real-Time Communication
+
+- WebSocket + SignalR for minimal latency
+- Avoid HTTP polling overhead
+
+### Storage Optimization
+
+- DynamoDB (Key-Value model)
+  - Better fit for message workload
+  - Avoid relational join overhead
+  - Scales horizontally
+
+### Offline Message Handling
+
+- Messages persisted in DynamoDB
+- Temporarily stored in `PendingMessage` in memory
+- When user reconnects:
+  - Pending messages are delivered immediately
+  - Ensures seamless user experience
+
+### Decoupled Persistence
+
+- Hub does NOT write directly to DB
+- SQS → Lambda handles storage asynchronously
+- Keeps Hub lightweight and responsive
 
 </details>
 
@@ -152,55 +196,56 @@ Angular (SignalR Client)
 - `chat-room-queue`
 - `chat-message-queue.fifo`
 
-FIFO queue configuration:
+FIFO Configuration:
 - `MessageGroupId = CaseId`
-- Guarantees ordered processing per conversation
+- Ensures strict ordering within each chat session
 
 ### Lambda Functions
 
 - `chat-room-to-db`
 - `chat-message-to-db`
 
-### DynamoDB Tables
+### DynamoDB
 
-- Chat Room archive
-- Chat Message archive
-- Indexed for query by user and conversation
+- Chat Room table
+- Chat Message table
+- Indexed for:
+  - User-based query
+  - Conversation-based query
+  - Archive retrieval
 
 </details>
 
 ---
 
 <details>
-<summary><strong>🧠 Backend Hub Design (SignalR)</strong></summary>
+<summary><strong>🧠 Technical Decisions</strong></summary>
 
-### Connection Management
+### Why SignalR?
 
-- In-memory `ConcurrentDictionary`
-- Tracks active user connections
-- Enables targeted message broadcasting
+- Native WebSocket support in .NET
+- Simplified connection management
+- Real-time push model
 
-### Message Processing Strategy
+### Why SQS FIFO?
 
-When a message is sent:
+- Guarantee message ordering
+- Ensure message consistency
+- Prevent duplicate/out-of-order persistence
 
-1. Send immediately to connected recipients.
-2. Push event to FIFO SQS queue.
-3. Lambda persists message asynchronously.
-4. Sender notified of delivery/read status updates.
+### Why DynamoDB instead of RDBMS?
 
-### Key Architectural Decisions
+- Message workload fits Key-Value access pattern
+- No complex joins required
+- Higher write scalability
+- Lower latency for chat queries
 
-- Separate transport layer (WebSocket) from storage layer.
-- Use FIFO queues to avoid out-of-order message storage.
-- Avoid direct DB writes inside Hub to minimize latency.
-- Keep Hub lightweight and responsive.
+### Why S3 for File Storage?
 
-### Concurrency & Scalability
-
-- Thread-safe connection storage.
-- Designed to scale horizontally under Elastic Beanstalk.
-- Load balancer handles multi-instance distribution.
+- Store files externally
+- Persist only Presigned URL in DB
+- Reduce DB storage cost
+- Improve scalability
 
 </details>
 
@@ -209,7 +254,7 @@ When a message is sent:
 <details>
 <summary><strong>🌐 Deployment Architecture</strong></summary>
 
-- Elastic Beanstalk environment (`rts-server-prod`)
+- Elastic Beanstalk environment
 - EC2 Auto Scaling
 - Application Load Balancer
 - Blue/Green deployment supported
@@ -220,26 +265,28 @@ When a message is sent:
 ---
 
 <details>
-<summary><strong>🔮 Future Improvements</strong></summary>
+<summary><strong>🎯 Impact</strong></summary>
 
-- Dead Letter Queue (DLQ) integration
-- Message deduplication strategy
-- Distributed cache for presence tracking
-- WebSocket scaling via Redis backplane
-- Message encryption at rest & in transit enhancement
+### Product-Level Impact
+
+- Implemented full Group Chat functionality
+- Built dedicated Chat History tab
+  - Filter conversations by:
+    - User name
+    - Organization
+    - Date
+  - Search message content by keyword
+- Improved usability and message traceability
+
+### Engineering Impact
+
+- Real-time + event-driven hybrid architecture
+- Scalable messaging system for hospital environment
+- Reliable message ordering
+- Reduced DB complexity by using DynamoDB
+- Clean separation of concerns
 
 </details>
-
----
-
-# 🎯 Engineering Highlights
-
-- WebSocket + Event-Driven hybrid architecture
-- FIFO-based message ordering guarantee
-- Decoupled persistence pipeline
-- Real-time UX + resilient backend design
-- Cloud-native scalability
-- Production-ready AWS deployment
 
 ---
 
@@ -247,10 +294,10 @@ When a message is sent:
 
 This project demonstrates:
 
-- Real-time communication system design
-- Event-driven cloud architecture
-- Scalable messaging infrastructure
-- Asynchronous persistence strategy
-- Production-level backend engineering
+- Real-time WebSocket architecture
+- Event-driven cloud design
+- FIFO-based message consistency
+- DynamoDB key-value modeling for messaging workloads
+- Scalable, production-ready AWS deployment
 
-Built for performance, scalability, and reliability in a cloud-native environment.
+Built to deliver instant user experience with resilient backend processing.
