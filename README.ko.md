@@ -126,13 +126,12 @@ Angular (SignalR Client)
 ---
 <details>
 <summary><strong>결과 예시</strong></summary>
-<img width="502"<img width="502" height="514" alt="Screenshot 2026-02-19 at 23 31 35" src="https://github.com/user-attachments/assets/6d0d1721-33b1-4d8a-842d-2e2d91a290a2" />
-<img width="623" height="717" alt="Screenshot 2026-02-19 at 23 33 32" src="https://github.com/user-attachments/assets/4ef9b1d7-8885-428b-8977-6cd3bb7d232e" />
-<img width="623" height="717" alt="Screenshot 2026-02-19 at 23 33 32" src="https://github.com/user-attachments/assets/837a11d4-ea10-424e-b61a-68959be2fe57" />
+<img width="300" height="300" alt="Screenshot 2026-02-19 at 23 31 35" src="https://github.com/user-attachments/assets/6d0d1721-33b1-4d8a-842d-2e2d91a290a2" />
+<img width="300" height="400" alt="Screenshot 2026-02-19 at 23 33 32" src="https://github.com/user-attachments/assets/4ef9b1d7-8885-428b-8977-6cd3bb7d232e" />
+<img width="300" height="500" alt="Screenshot 2026-02-19 at 23 33 32" src="https://github.com/user-attachments/assets/837a11d4-ea10-424e-b61a-68959be2fe57" />
 
 </details>
 ---
-
 <details>
 <summary><strong>핵심 기능 (Core Features)</strong></summary>
 
