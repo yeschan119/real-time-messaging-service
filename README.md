@@ -1,6 +1,7 @@
 # Real-Time Messaging Service  
 ### Angular + .NET 8 + SignalR + AWS (Event-Driven Architecture)
 
+[한국어 🇰🇷](README.ko.md)
 ---
 
 ## Executive Summary
