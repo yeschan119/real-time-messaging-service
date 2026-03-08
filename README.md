@@ -8,13 +8,13 @@
 
 Designed and implemented a **production-grade real-time messaging platform** with:
 
-- ⚡ WebSocket-based real-time communication (SignalR)
-- 📨 Event-driven persistence (SQS → Lambda → DynamoDB)
-- 👥 1:1 and Group Chat support
-- 📎 Secure file uploads via S3 Presigned URL
-- 🔄 Edit / Delete / Read Receipt lifecycle
-- ☁ Fully deployed on AWS Elastic Beanstalk
-- 📈 Horizontally scalable backend architecture
+- WebSocket-based real-time communication (SignalR)
+- Event-driven persistence (SQS → Lambda → DynamoDB)
+- 1:1 and Group Chat support
+- Secure file uploads via S3 Presigned URL
+- Edit / Delete / Read Receipt lifecycle
+- Fully deployed on AWS Elastic Beanstalk
+- Horizontally scalable backend architecture
 
 > Real-time UX combined with resilient cloud-native event processing.
 
