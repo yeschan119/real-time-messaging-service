@@ -8,13 +8,13 @@
 
 다음과 같은 요소를 기반으로 **Production-Grade 실시간 메시징 플랫폼**을 설계 및 구현:
 
-- ⚡ WebSocket 기반 실시간 통신 (SignalR)
-- 📨 이벤트 기반 영속성 처리 (SQS → Lambda → DynamoDB)
-- 👥 1:1 및 그룹 채팅 지원
-- 📎 S3 Presigned URL 기반 안전한 파일 업로드
-- 🔄 메시지 수정 / 삭제 / 읽음 처리 라이프사이클 지원
-- ☁ AWS Elastic Beanstalk 기반 배포
-- 📈 수평 확장이 가능한 백엔드 아키텍처
+- WebSocket 기반 실시간 통신 (SignalR)
+- 이벤트 기반 영속성 처리 (SQS → Lambda → DynamoDB)
+- 1:1 및 그룹 채팅 지원
+- S3 Presigned URL 기반 안전한 파일 업로드
+- 메시지 수정 / 삭제 / 읽음 처리 라이프사이클 지원
+- AWS Elastic Beanstalk 기반 배포
+- 수평 확장이 가능한 백엔드 아키텍처
 
 > 실시간 사용자 경험과 안정적인 클라우드 이벤트 처리 구조를 결합한 시스템
 
